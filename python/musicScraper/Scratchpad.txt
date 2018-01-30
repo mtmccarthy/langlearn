@@ -1,0 +1,4 @@
+Create a website to show off projects
+
+Write a script performs an etymological analysis on a given input
+	Machine Learning implications - Discover age of author? Reading level/education history?
