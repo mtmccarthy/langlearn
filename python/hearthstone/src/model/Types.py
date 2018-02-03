@@ -55,7 +55,7 @@ Decks = NewType('Decks', Tuple[Deck, Deck])
 
 TurnNumber = NewType('TurnNumber', int)
 
-HearthstoneModel = NewType('GameState', Tuple[Heroes, Hands, Decks, Board, TurnNumber])
+HearthstoneModel = NewType('HearthstoneModel', Tuple[Heroes, Hands, Decks, Board, TurnNumber])
 
 EndTurnMove = NewType('EndTurnMove', None)
 

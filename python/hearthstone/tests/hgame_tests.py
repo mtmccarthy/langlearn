@@ -1,6 +1,5 @@
 import unittest
-from src.model.hgame import Druid, Hunter, Mage, Paladin, Priest, \
-                            Rogue, Shaman, Warlock, Warrior, AllHeroes, init, drawCard, drawNCards
+from src.model.hgame import *
 from src.model.testdata import AcidicSwampOoze, AncestralHealing
 
 class TestHGame(unittest.TestCase):
@@ -70,5 +69,27 @@ class TestHGame(unittest.TestCase):
         for card in top_cards:
             self.assertTrue(card in actual_hand)
 
+
+    def test_remove_card(self):
+        test_hand = [AcidicSwampOoze, AncestralHealing]
+
+        self.assertEquals(2, len(test_hand))
+        new_hand = removeCard(test_hand, AcidicSwampOoze)
+        self.assertEquals(1, len(new_hand))
+        one_card_hand = removeCard(new_hand, AcidicSwampOoze)
+        self.assertEquals(new_hand, one_card_hand)
+        self.assertEquals([], removeCard([], AcidicSwampOoze))
+        self.assertEquals([AcidicSwampOoze],
+                          removeCard([AcidicSwampOoze, AcidicSwampOoze], AcidicSwampOoze))
+
+    def test_add_minion_to_board(self):
+        test_board = self.model[3]
+        self.assertEquals(0, len(test_board[0]))
+        self.assertEquals(0, len(test_board[1]))
+
+        new_board = addMinionToBoard(test_board, AcidicSwampOoze, True)
+        self.assertEquals(1, len(new_board[0]))
+
+        unchanged_board = addMinionToBoard(test_board, AcidicSwampOoze, True)
 
 
