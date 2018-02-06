@@ -21,7 +21,6 @@ class TestHGame(unittest.TestCase):
         for hero in AllHeroes:
             self.assertEquals((30, 0), hero[0])
 
-
     def test_init(self):
         self.assertEquals((Druid, Paladin), self.model[0])
         self.assertEquals(
@@ -69,7 +68,6 @@ class TestHGame(unittest.TestCase):
         for card in top_cards:
             self.assertTrue(card in actual_hand)
 
-
     def test_remove_card(self):
         test_hand = [AcidicSwampOoze, AncestralHealing]
 
@@ -90,6 +88,11 @@ class TestHGame(unittest.TestCase):
         new_board = addMinionToBoard(test_board, AcidicSwampOoze, True)
         self.assertEquals(1, len(new_board[0]))
 
-        unchanged_board = addMinionToBoard(test_board, AcidicSwampOoze, True)
+        full_board = ([AcidicSwampOoze, AcidicSwampOoze, AcidicSwampOoze,
+                      AcidicSwampOoze, AcidicSwampOoze, AcidicSwampOoze, AcidicSwampOoze],
+                      [])
+
+        self.assertEquals(None,
+                          addMinionToBoard(full_board, AcidicSwampOoze, True))
 
 

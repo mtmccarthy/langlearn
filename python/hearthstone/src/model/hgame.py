@@ -125,7 +125,7 @@ def playMinion(model: HearthstoneModel, minion: Card) -> Union[HearthstoneModel,
 
 def addMinionToBoard(board : Board, card: Card, isFirstPlayerTurn : bool) -> Union[Board, None]:
 
-    if not validToAddMinionToBoard(board, card):
+    if not validToAddMinionToBoard(board, card, isFirstPlayerTurn):
         return None
 
     if isFirstPlayerTurn:
@@ -138,8 +138,13 @@ def addMinionToBoard(board : Board, card: Card, isFirstPlayerTurn : bool) -> Uni
         return Board((board[0], new_minions))
 
 
-def validToAddMinionToBoard(board : Board, card: Card) -> bool:
-    return True
+def validToAddMinionToBoard(board : Board, card: Card, isFirstPlayerTurn: bool) -> bool:
+    if isFirstPlayerTurn:
+        side_of_board = board[0]
+    else:
+        side_of_board = board[1]
+
+    return len(side_of_board) < 7
 
 
 def removeCard(hand: Hand, card: Card) -> Hand:
