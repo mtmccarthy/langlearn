@@ -1,0 +1,14 @@
+[package]
+name = "rabbit348"
+version = "0.1.0"
+authors = ["mtmccarthy <mtmccarthy@wpi.edu>"]
+
+[lib]
+name = "rabbit"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mybin"
+path = "src/bin.rs"
+
+[dependencies]
