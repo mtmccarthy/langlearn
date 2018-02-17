@@ -2,6 +2,7 @@ from typing import Tuple, List, Callable, Dict
 import re
 import functools
 import itertools
+from common import get_file_lines
 
 """
 Solution to easy challenge #349 Change Calculator
@@ -21,13 +22,6 @@ Your progam should emit the coins you would give back to yield the correct value
 
 def sanitize_output(line: str) -> str:
     return line[8:] # Remove leading Output line
-
-def get_file_lines(path: str) -> List[str]:
-    input_file = open(path)
-    lines = input_file.readlines()
-    input_file.close()
-
-    return lines
 
 
 def parse_input(path: str) -> Tuple[List[int], Callable[[int], List[int]]]:
