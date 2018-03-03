@@ -46,16 +46,18 @@ pub fn parse_input(path: &str) -> Result<Well, String> {
     let line_vec: Vec<&str> = file_str.split("\n").collect();
     let dimensions = line_vec[0];
     let width_height : Vec<&str> = dimensions.split(" ").collect();
-    let width = width_height[0].parse::<usize>().unwrap();
-    let height = width_height[1].parse::<usize>().unwrap();
+    println!("{:?}", width_height);
+    let width = width_height[0].trim_right().parse::<usize>().unwrap();
+    //Trim in order to remove carriage returns if on Windows machine
+    let height = width_height[1].trim_right().parse::<usize>().unwrap();
 
     let mut squares = Vec::new();
 
-    for i in 1..height {
+    for i in 1..height + 1{
         let mut row = Vec::new();
         let line_nums : Vec<&str>= line_vec[i].split(" ").collect();
-        for i in 1..width {
-            let num_str : &str = line_nums[i - 1];
+        for i in 1..width + 1{
+            let num_str : &str = line_nums[i - 1].trim_right();
             let num : usize = num_str.parse::<usize>().unwrap();
             row.push(num);
         }
@@ -81,7 +83,8 @@ mod parse_input_tests {
     #[test]
     fn parse_input() {
 
-        let simple_input_path = "./test_input/simple_input.txt";
+        let simple_input_path =
+            "/mnt/c/dev/git/langlearn/rust/hard352/src/test_input/simple_input.txt";
         let expected_squares = vec![vec![1, 9, 6], vec![2, 8, 5], vec![3, 7, 4]];
         let expected_output = Ok(make_well(3, 3, expected_squares, 4));
         assert_eq!(expected_output, super::parse_input(simple_input_path));
