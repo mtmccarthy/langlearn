@@ -130,6 +130,7 @@ pub fn simulate_well(well: Well, starting_square: (usize, usize)) -> Option<i32>
             //Add 1 unit of water to each node in the path, if this helps increase the path
             //it will be discovered in the next iteration of the loop
             increment_water_height(&mut current_well, &mut current_path);
+            current_time += current_path.len();
         }
     }
 
