@@ -1,0 +1,6 @@
+[package]
+name = "hard352"
+version = "0.1.0"
+authors = ["mtmccarthy"]
+
+[dependencies]
